@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +48,7 @@
             <img src="abhinavImage.png" alt="Profile">
         </div>
         <h1>Abhinav Nautiyal</h1>
-        <h2>AI/ML Engineer | LLM Systems • RAG • Applied AI</h2>
+        <h2>AI/ML Engineer | LLM Systems · RAG · Applied AI</h2>
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/abhinavnautiyalds/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/abhinavnautiyalDS" target="_blank"><i class="fab fa-github"></i></a>
@@ -58,6 +56,8 @@
             <input type="checkbox" id="show-email" hidden>
             <label for="show-email" style="cursor: pointer;"><i class="fas fa-envelope"></i></label>
             <span id="email">abhinavnautiyal96@gmail.com</span>
+            <!-- Download Resume Button -->
+            <a href="resume.pdf" class="resume-btn" download><i class="fas fa-download"></i> Resume</a>
         </div>
     </div>
 </header>
@@ -83,8 +83,16 @@
     </div>
 </section>
 
+<!-- SECTION FILTERS -->
+<div class="section-filters">
+    <button class="section-filter active" data-section="skills">Skills</button>
+    <button class="section-filter active" data-section="experience">Experience</button>
+    <button class="section-filter active" data-section="education">Education</button>
+    <button class="section-filter active" data-section="projects">Projects</button>
+</div>
+
 <!-- SKILLS SECTION -->
-<section class="skills">
+<section id="skills-section" class="skills">
     <h2>Technical Skills</h2>
     <div class="skills-grid">
         <div class="skill-category">
@@ -100,7 +108,7 @@
             <h3>Deep Learning & GenAI</h3>
             <ul>
                 <li>PyTorch, TensorFlow, Keras</li>
-                <li>LangChain, LlamaIndex</li>
+                <li>LangChain, Llama2base</li>
                 <li>RAG, Vector DBs (Chroma, FAISS)</li>
                 <li>Multimodal AI (CLIP, GPT)</li>
             </ul>
@@ -125,11 +133,11 @@
 </section>
 
 <!-- EXPERIENCE SECTION -->
-<section class="experience">
+<section id="experience-section" class="experience">
     <h2>Work Experience</h2>
     <div class="exp-item">
         <h3>AI/ML Engineer (Freelance)</h3>
-        <p class="exp-date">2023 – Present</p>
+        <p class="exp-date">2021 – Present</p>
         <ul>
             <li>Built end-to-end RAG systems for finance and e‑commerce domains, improving response accuracy by 40%.</li>
             <li>Developed MLOps pipelines for time series forecasting, reducing deployment time by 60%.</li>
@@ -140,7 +148,7 @@
         <h3>Data Science Intern</h3>
         <p class="exp-date">2022 – 2023</p>
         <ul>
-            <li>Implemented classification models for insurance cross‑sell prediction, achieving 92% AUC‑ROC.</li>
+            <li>Implemented classification models for insurance cross‑sell prediction, achieving 92% AUC ROC.</li>
             <li>Automated data cleaning and feature engineering workflows, saving 15+ hours per week.</li>
             <li>Designed interactive Power BI dashboards for banking analytics, adopted by 5+ teams.</li>
         </ul>
@@ -148,7 +156,7 @@
 </section>
 
 <!-- EDUCATION SECTION -->
-<section class="education">
+<section id="education-section" class="education">
     <h2>Education</h2>
     <div class="edu-item">
         <h3>AlmaBetter</h3>
@@ -163,7 +171,7 @@
 </section>
 
 <!-- PROJECTS SECTION -->
-<section class="projects">
+<section id="projects-section" class="projects">
     <h2>All Projects</h2>
     <div class="project-filters">
         <button class="filter active" data-category="all">All</button>
@@ -294,7 +302,6 @@
         </div>
     </div>
 </section>
-    
 
 <script src="script.js"></script>
 </body>
