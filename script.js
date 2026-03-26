@@ -169,6 +169,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    function copyEmail() {
+    const email = "abhinavnautiyal96@gmail.com";
+
+    navigator.clipboard.writeText(email).then(() => {
+        alert("Mail ID copied!");
+    }).catch(err => {
+        console.error("Failed to copy: ", err);
+    });
+}
+
     // ========================
     // PARTICLE CANVAS (floating blue dots)
     // ========================
@@ -201,6 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     initParticles();
+
+    
 
     function drawParticles() {
         ctx.clearRect(0, 0, W, H);
