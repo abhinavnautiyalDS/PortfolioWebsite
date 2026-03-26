@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhinav | AI/ML Engineer</title>
-
+    <title>Abhinav Nautiyal | AI/ML Engineer</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Clarity Analytics -->
     <script type="text/javascript">
@@ -21,287 +22,435 @@
 
 <!-- Stars Background -->
 <div class="star-field"></div>
-<div class="shooting-stars">
-    <span class="shooting-star"></span>
-    <span class="shooting-star"></span>
-    <span class="shooting-star"></span>
+<canvas id="particles-canvas"></canvas>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar" id="navbar">
+    <div class="nav-logo">AN<span class="dot">.</span></div>
+    <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills-section">Skills</a></li>
+        <li><a href="#experience-section">Experience</a></li>
+        <li><a href="#projects-section">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+        <a href="resume.pdf" class="resume-btn" download><i class="fas fa-download"></i> Resume</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+    <ul>
+        <li><a href="#hero" class="mobile-link">Home</a></li>
+        <li><a href="#about" class="mobile-link">About</a></li>
+        <li><a href="#skills-section" class="mobile-link">Skills</a></li>
+        <li><a href="#experience-section" class="mobile-link">Experience</a></li>
+        <li><a href="#projects-section" class="mobile-link">Projects</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+    <a href="resume.pdf" class="resume-btn mobile-resume" download><i class="fas fa-download"></i> Download Resume</a>
 </div>
 
 <!-- Certificates Modal -->
 <div id="cert-modal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
-        <h3>Degrees & Certificates</h3>
+        <button class="close" aria-label="Close">&times;</button>
+        <h3>Degrees &amp; Certificates</h3>
         <ul class="cert-list">
-            <li><a href="https://drive.google.com/file/d/1rzuxIAn0Tp5PPR2i72XJCCSNuoJQKj1V/view" target="_blank">AlmaBetter Data Science</a></li>
-            <li><a href="https://drive.google.com/file/d/19Ui72ZPPT3gkIovxVL65lTzt1zqyylMj/view?usp=sharing" target="_blank">Physics Degree</a></li>
-            <li><a href="https://drive.google.com/file/d/1rBwzlbxef9ESRZ3SJ1t6Niak6rqigXLO/view?usp=sharing" target="_blank">Internship Certificate</a></li>
+            <li>
+                <i class="fas fa-graduation-cap"></i>
+                <a href="https://drive.google.com/file/d/1rzuxIAn0Tp5PPR2i72XJCCSNuoJQKj1V/view" target="_blank">AlmaBetter Data Science</a>
+            </li>
+            <li>
+                <i class="fas fa-atom"></i>
+                <a href="https://drive.google.com/file/d/19Ui72ZPPT3gkIovxVL65lTzt1zqyylMj/view?usp=sharing" target="_blank">Physics Degree (B.Sc.)</a>
+            </li>
+            <li>
+                <i class="fas fa-briefcase"></i>
+                <a href="https://drive.google.com/file/d/1rBwzlbxef9ESRZ3SJ1t6Niak6rqigXLO/view?usp=sharing" target="_blank">Internship Certificate</a>
+            </li>
         </ul>
     </div>
 </div>
 
-<!-- HERO -->
-<header class="hero">
-    <button class="cert-button" id="open-cert-modal">Degrees & Certificates</button>
-    <div class="hero-center">
-        <div class="profile-pic">
-            <img src="abhinavImage.png" alt="Profile">
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="hero">
+    <div class="hero-center reveal">
+        <div class="profile-wrapper">
+            <div class="profile-pic">
+                <img src="abhinavImage.png" alt="Abhinav Nautiyal">
+            </div>
+            <div class="status-badge"><span class="pulse-dot"></span> Open to Opportunities</div>
         </div>
+        <p class="hero-mono">HELLO, I'M</p>
         <h1>Abhinav Nautiyal</h1>
-        <h2>AI/ML Engineer | LLM Systems · RAG · Applied AI</h2>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/abhinavnautiyalds/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/abhinavnautiyalDS" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://medium.com/@abhinavnautiyal96" target="_blank"><i class="fab fa-medium"></i></a>
-            <input type="checkbox" id="show-email" hidden>
-            <label for="show-email" style="cursor: pointer;"><i class="fas fa-envelope"></i></label>
-            <span id="email">abhinavnautiyal96@gmail.com</span>
-            <!-- Download Resume Button -->
-            <a href="resume.pdf" class="resume-btn" download><i class="fas fa-download"></i> Resume</a>
+        <h2>AI/ML Engineer</h2>
+        <p class="hero-sub">Building intelligent systems with <span class="highlight">LLMs · RAG · Applied AI</span></p>
+        <div class="hero-cta">
+            <a href="#projects-section" class="btn-primary">View My Work</a>
+            <button class="btn-outline" id="open-cert-modal"><i class="fas fa-certificate"></i> Credentials</button>
         </div>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/abhinavnautiyalds/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/abhinavnautiyalDS" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://medium.com/@abhinavnautiyal96" target="_blank" aria-label="Medium"><i class="fab fa-medium"></i></a>
+            <a href="mailto:abhinavnautiyal96@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <span></span>
     </div>
 </header>
 
-<!-- INTRODUCTION -->
-<section class="introduction">
-    <h2>Introduction</h2>
-    <div class="intro-tabs">
-        <button class="tab active" data-tab="written">Written</button>
-        <button class="tab" data-tab="video">Video</button>
+<!-- ===================== ABOUT ===================== -->
+<section class="introduction" id="about">
+    <div class="section-label reveal">ABOUT ME</div>
+    <h2 class="section-title reveal">Who I Am</h2>
+    <div class="intro-tabs reveal">
+        <button class="tab active" data-tab="written"><i class="fas fa-align-left"></i> Written</button>
+        <button class="tab" data-tab="video"><i class="fas fa-play-circle"></i> Video Intro</button>
     </div>
-    <div class="intro-content active" id="written-content">
+    <div class="intro-content active reveal" id="written-content">
         <p>
-            I am an AI/ML Engineer focused on building end-to-end intelligent systems using machine learning and large language models.
+            I'm an <strong>AI/ML Engineer</strong> focused on building end-to-end intelligent systems using machine learning and large language models.
             I work on real-world problems by designing systems that go beyond model training — including data processing, retrieval pipelines, and deployment-ready workflows.
-            My experience includes building Retrieval-Augmented Generation (RAG) systems, multimodal AI applications combining computer vision and NLP, and scalable machine learning pipelines for prediction tasks.
-            Alongside this, I have a strong foundation in data science, including exploratory analysis, feature engineering, and model evaluation.
-            I approach problems with a system-first mindset — focusing on reliability, scalability, and practical impact rather than just theoretical models.
         </p>
+        <p>
+            My experience includes building <strong>Retrieval-Augmented Generation (RAG)</strong> systems, multimodal AI applications combining computer vision and NLP, and scalable machine learning pipelines.
+            I approach problems with a <strong>system-first mindset</strong> — focusing on reliability, scalability, and practical impact.
+        </p>
+        <div class="stat-row">
+            <div class="stat"><span class="stat-num">4+</span><span class="stat-lbl">Years Experience</span></div>
+            <div class="stat"><span class="stat-num">8+</span><span class="stat-lbl">Projects Built</span></div>
+            <div class="stat"><span class="stat-num">3</span><span class="stat-lbl">Certifications</span></div>
+            <div class="stat"><span class="stat-num">40%</span><span class="stat-lbl">Avg. Accuracy Gain</span></div>
+        </div>
     </div>
     <div class="intro-content" id="video-content">
-        <iframe src="https://www.youtube.com/embed/uPl2UC7RygA" allowfullscreen></iframe>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/uPl2UC7RygA" allowfullscreen title="Abhinav's Video Introduction"></iframe>
+        </div>
     </div>
 </section>
 
-<!-- SECTION FILTERS -->
-<div class="section-filters">
+<!-- ===================== SECTION FILTERS ===================== -->
+<div class="section-filters reveal">
+    <span class="filter-label">Show:</span>
     <button class="section-filter active" data-section="skills">Skills</button>
     <button class="section-filter active" data-section="experience">Experience</button>
     <button class="section-filter active" data-section="education">Education</button>
     <button class="section-filter active" data-section="projects">Projects</button>
 </div>
 
-<!-- SKILLS SECTION -->
+<!-- ===================== SKILLS ===================== -->
 <section id="skills-section" class="skills">
-    <h2>Technical Skills</h2>
+    <div class="section-label reveal">WHAT I KNOW</div>
+    <h2 class="section-title reveal">Technical Skills</h2>
     <div class="skills-grid">
-        <div class="skill-category">
-            <h3>ML & MLOps</h3>
-            <ul>
-                <li>Scikit-learn, XGBoost, LightGBM</li>
-                <li>MLflow, Docker, FastAPI</li>
-                <li>Time Series Forecasting</li>
-                <li>Imbalanced Learning</li>
-            </ul>
+        <div class="skill-category reveal">
+            <div class="skill-icon"><i class="fas fa-robot"></i></div>
+            <h3>ML &amp; MLOps</h3>
+            <div class="skill-tags">
+                <span>Scikit-learn</span><span>XGBoost</span><span>LightGBM</span>
+                <span>MLflow</span><span>Docker</span><span>FastAPI</span>
+                <span>Time Series</span><span>Imbalanced Learning</span>
+            </div>
         </div>
-        <div class="skill-category">
-            <h3>Deep Learning & GenAI</h3>
-            <ul>
-                <li>PyTorch, TensorFlow, Keras</li>
-                <li>LangChain, Llama2base</li>
-                <li>RAG, Vector DBs (Chroma, FAISS)</li>
-                <li>Multimodal AI (CLIP, GPT)</li>
-            </ul>
+        <div class="skill-category reveal">
+            <div class="skill-icon"><i class="fas fa-brain"></i></div>
+            <h3>Deep Learning &amp; GenAI</h3>
+            <div class="skill-tags">
+                <span>PyTorch</span><span>TensorFlow</span><span>Keras</span>
+                <span>LangChain</span><span>LLaMA</span><span>RAG</span>
+                <span>FAISS</span><span>ChromaDB</span><span>CLIP</span><span>GPT</span>
+            </div>
         </div>
-        <div class="skill-category">
-            <h3>Data & Visualization</h3>
-            <ul>
-                <li>SQL (PostgreSQL, MySQL)</li>
-                <li>Power BI, Tableau</li>
-                <li>Pandas, NumPy, Matplotlib</li>
-            </ul>
+        <div class="skill-category reveal">
+            <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
+            <h3>Data &amp; Visualization</h3>
+            <div class="skill-tags">
+                <span>SQL</span><span>PostgreSQL</span><span>MySQL</span>
+                <span>Power BI</span><span>Tableau</span>
+                <span>Pandas</span><span>NumPy</span><span>Matplotlib</span>
+            </div>
         </div>
-        <div class="skill-category">
-            <h3>Tools & Platforms</h3>
-            <ul>
-                <li>Git, GitHub Actions</li>
-                <li>AWS (S3, EC2, Lambda)</li>
-                <li>Jupyter, VS Code</li>
-            </ul>
+        <div class="skill-category reveal">
+            <div class="skill-icon"><i class="fas fa-tools"></i></div>
+            <h3>Tools &amp; Platforms</h3>
+            <div class="skill-tags">
+                <span>Git</span><span>GitHub Actions</span>
+                <span>AWS S3</span><span>EC2</span><span>Lambda</span>
+                <span>Jupyter</span><span>VS Code</span>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- EXPERIENCE SECTION -->
+<!-- ===================== EXPERIENCE ===================== -->
 <section id="experience-section" class="experience">
-    <h2>Work Experience</h2>
-    <div class="exp-item">
-        <h3>AI/ML Engineer (Freelance)</h3>
-        <p class="exp-date">2021 – Present</p>
-        <ul>
-            <li>Built end-to-end RAG systems for finance and e‑commerce domains, improving response accuracy by 40%.</li>
-            <li>Developed MLOps pipelines for time series forecasting, reducing deployment time by 60%.</li>
-            <li>Created multimodal AI applications combining computer vision and NLP for emotion-aware storytelling.</li>
-        </ul>
-    </div>
-    <div class="exp-item">
-        <h3>Data Science Intern</h3>
-        <p class="exp-date">2022 – 2023</p>
-        <ul>
-            <li>Implemented classification models for insurance cross‑sell prediction, achieving 92% AUC ROC.</li>
-            <li>Automated data cleaning and feature engineering workflows, saving 15+ hours per week.</li>
-            <li>Designed interactive Power BI dashboards for banking analytics, adopted by 5+ teams.</li>
-        </ul>
+    <div class="section-label reveal">MY JOURNEY</div>
+    <h2 class="section-title reveal">Work Experience</h2>
+    <div class="timeline">
+        <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <div>
+                        <h3>AI/ML Engineer</h3>
+                        <p class="company">Freelance / Independent</p>
+                    </div>
+                    <span class="exp-date">2021 – Present</span>
+                </div>
+                <ul>
+                    <li>Built end-to-end RAG systems for finance and e-commerce domains, improving response accuracy by <strong>40%</strong>.</li>
+                    <li>Developed MLOps pipelines for time series forecasting, reducing deployment time by <strong>60%</strong>.</li>
+                    <li>Created multimodal AI applications combining computer vision and NLP for emotion-aware storytelling.</li>
+                </ul>
+                <div class="exp-tags">
+                    <span>RAG</span><span>LangChain</span><span>MLOps</span><span>PyTorch</span>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <div>
+                        <h3>Data Science Intern</h3>
+                        <p class="company">Organization (2022–2023)</p>
+                    </div>
+                    <span class="exp-date">2022 – 2023</span>
+                </div>
+                <ul>
+                    <li>Implemented classification models for insurance cross-sell prediction, achieving <strong>92% AUC ROC</strong>.</li>
+                    <li>Automated data cleaning and feature engineering workflows, saving <strong>15+ hours/week</strong>.</li>
+                    <li>Designed interactive Power BI dashboards for banking analytics, adopted by <strong>5+ teams</strong>.</li>
+                </ul>
+                <div class="exp-tags">
+                    <span>XGBoost</span><span>Power BI</span><span>SQL</span><span>Python</span>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- EDUCATION SECTION -->
+<!-- ===================== EDUCATION ===================== -->
 <section id="education-section" class="education">
-    <h2>Education</h2>
-    <div class="edu-item">
-        <h3>AlmaBetter</h3>
-        <p>Data Science Program | 2022 – 2023</p>
-        <p>Specialization in Machine Learning, Deep Learning, and MLOps</p>
-    </div>
-    <div class="edu-item">
-        <h3>Bachelor of Science (Physics)</h3>
-        <p>University | 2018 – 2021</p>
-        <p>Graduated with Honors; thesis on computational physics</p>
+    <div class="section-label reveal">BACKGROUND</div>
+    <h2 class="section-title reveal">Education</h2>
+    <div class="edu-grid">
+        <div class="edu-item reveal">
+            <div class="edu-icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="edu-body">
+                <h3>AlmaBetter</h3>
+                <p class="edu-degree">Full-Stack Data Science Program</p>
+                <p class="edu-date">2022 – 2023</p>
+                <p class="edu-desc">Specialization in Machine Learning, Deep Learning, and MLOps</p>
+            </div>
+        </div>
+        <div class="edu-item reveal">
+            <div class="edu-icon"><i class="fas fa-atom"></i></div>
+            <div class="edu-body">
+                <h3>Bachelor of Science (Physics)</h3>
+                <p class="edu-degree">University — Honours Graduate</p>
+                <p class="edu-date">2018 – 2021</p>
+                <p class="edu-desc">Graduated with Honors; thesis on computational physics</p>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- PROJECTS SECTION -->
+<!-- ===================== PROJECTS ===================== -->
 <section id="projects-section" class="projects">
-    <h2>All Projects</h2>
-    <div class="project-filters">
+    <div class="section-label reveal">MY WORK</div>
+    <h2 class="section-title reveal">All Projects</h2>
+    <div class="project-filters reveal">
         <button class="filter active" data-category="all">All</button>
-        <button class="filter" data-category="ml">ML & MLOps</button>
-        <button class="filter" data-category="dl">DL & GenAI</button>
-        <button class="filter" data-category="sql">SQL & PowerBI</button>
+        <button class="filter" data-category="ml">ML &amp; MLOps</button>
+        <button class="filter" data-category="dl">DL &amp; GenAI</button>
+        <button class="filter" data-category="sql">SQL &amp; Power BI</button>
     </div>
     <div class="project-grid">
-        <!-- Emotion Narrator AI -->
-        <div class="project" data-category="dl">
-            <img src="emotion.png" alt="Emotion Narrator AI">
-            <h4>Emotion Narrator AI</h4>
-            <div class="project-tech">
-                <span>PyTorch</span> <span>CLIP</span> <span>GPT-2</span> <span>Streamlit</span>
+
+        <div class="project reveal" data-category="dl">
+            <div class="project-img-wrap">
+                <img src="emotion.png" alt="Emotion Narrator AI">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">GenAI</span>
             </div>
-            <p class="project-desc">
-                Multimodal AI that detects facial emotions and generates a contextual story – giving feelings a voice.
-            </p>
-            <div class="buttons">
-                <a class="btn source" href="https://github.com/abhinavnautiyalDS/Emotion-Narrator-AI-that-gives-feelings-a-voice/blob/main1/training/Cnn_model.ipynb?short_path=b8015f0" target="_blank">Source Code</a>
-                <a class="btn read" href="https://medium.com/@abhinavnautiyal96/emotion-narrator-building-a-multimodal-ai-system-that-sees-understands-and-speaks-human-emotion-9914b410da35" target="_blank">Read</a>
-            </div>
-        </div>
-        <!-- Walmart Sales Forecasting -->
-        <div class="project" data-category="ml">
-            <img src="walmart.png" alt="Walmart Sales Forecasting">
-            <h4>Walmart Sales Forecasting</h4>
-            <div class="project-tech">
-                <span>XGBoost</span> <span>MLflow</span> <span>Docker</span> <span>FastAPI</span>
-            </div>
-            <p class="project-desc">
-                End‑to‑end MLOps pipeline for time series prediction with automated retraining and REST API deployment.
-            </p>
-            <div class="buttons">
-                <a class="btn source" href="https://github.com/abhinavnautiyalDS/walmart-sales-forecasting-mlops/blob/master1/data/scripts/mlops_project_EDA_.ipynb" target="_blank">Source Code</a>
-                <a class="btn read" href="https://medium.com/@abhinavnautiyal96/how-i-built-a-scalable-walmart-sales-forecasting-pipeline-using-machine-learning-and-mlops-2239f05c9eab" target="_blank">Read</a>
+            <div class="project-body">
+                <h4>Emotion Narrator AI</h4>
+                <div class="project-tech">
+                    <span>PyTorch</span><span>CLIP</span><span>GPT-2</span><span>Streamlit</span>
+                </div>
+                <p class="project-desc">Multimodal AI that detects facial emotions and generates a contextual story — giving feelings a voice.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Emotion-Narrator-AI-that-gives-feelings-a-voice/blob/main1/training/Cnn_model.ipynb" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://medium.com/@abhinavnautiyal96/emotion-narrator-building-a-multimodal-ai-system-that-sees-understands-and-speaks-human-emotion-9914b410da35" target="_blank"><i class="fab fa-medium"></i> Article</a>
+                </div>
             </div>
         </div>
-        <!-- Finwise GenAI Platform -->
-        <div class="project" data-category="dl">
-            <img src="genai.png" alt="Finwise GenAI Platform">
-            <h4>Finwise GenAI Platform</h4>
-            <div class="project-tech">
-                <span>LangChain</span> <span>RAG</span> <span>SQL Agent</span> <span>Chroma</span>
+
+        <div class="project reveal" data-category="ml">
+            <div class="project-img-wrap">
+                <img src="walmart.png" alt="Walmart Sales Forecasting">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">MLOps</span>
             </div>
-            <p class="project-desc">
-                Generative AI assistant with agentic RAG, SQL querying, and automation for financial insights.
-            </p>
-            <div class="buttons">
-                <a class="btn source" href="https://github.com/abhinavnautiyalDS/Finwise-GenAI-Assistant/tree/main/finwise-genai-capstone" target="_blank">Source Code</a>
-                <a class="btn read" href="https://medium.com/@abhinavnautiyal96/building-a-real-world-financial-genai-assistant-from-memory-to-automation-f4bf8f38a052" target="_blank">Read</a>
-            </div>
-        </div>
-        <!-- Vehicle Insurance Cross-Sell -->
-        <div class="project" data-category="ml">
-            <img src="vehical.png" alt="Vehicle Insurance Cross-Sell Prediction">
-            <h4>Vehicle Insurance Cross‑Sell</h4>
-            <div class="project-tech">
-                <span>Imbalanced Learning</span> <span>SMOTE</span> <span>XGBoost</span>
-            </div>
-            <p class="project-desc">
-                Predictive model for insurance cross‑sell using advanced resampling and ensemble techniques.
-            </p>
-            <div class="buttons">
-                <a class="btn source" href="https://github.com/abhinavnautiyalDS/Health-Insurance-cross-Prediction/blob/main/HealthInsuranceCrossSellPrediction.ipynb" target="_blank">Source Code</a>
-                <a class="btn read" href="https://github.com/abhinavnautiyalDS/Health-Insurance-cross-Prediction" target="_blank">Read</a>
+            <div class="project-body">
+                <h4>Walmart Sales Forecasting</h4>
+                <div class="project-tech">
+                    <span>XGBoost</span><span>MLflow</span><span>Docker</span><span>FastAPI</span>
+                </div>
+                <p class="project-desc">End-to-end MLOps pipeline for time series prediction with automated retraining and REST API deployment.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/walmart-sales-forecasting-mlops/blob/master1/data/scripts/mlops_project_EDA_.ipynb" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://medium.com/@abhinavnautiyal96/how-i-built-a-scalable-walmart-sales-forecasting-pipeline-using-machine-learning-and-mlops-2239f05c9eab" target="_blank"><i class="fab fa-medium"></i> Article</a>
+                </div>
             </div>
         </div>
-        <!-- Job Recommendation System -->
-        <div class="project" data-category="dl">
-            <img src="job.png" alt="NLP Job Recommendation">
-            <h4>NLP Job Recommendation</h4>
-            <div class="project-tech">
-                <span>LangChain</span> <span>Gemini</span> <span>FAISS</span> <span>Streamlit</span>
+
+        <div class="project reveal" data-category="dl">
+            <div class="project-img-wrap">
+                <img src="genai.png" alt="Finwise GenAI Platform">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">GenAI</span>
             </div>
-            <p class="project-desc">
-                Semantic matching of resumes to job descriptions and automated application generation using LLMs.
-            </p>
-            <div class="buttons">
-                <a class="btn source" href="https://github.com/abhinavnautiyalDS/Smart-Job-Recommendation-System-using-LangChain-Gemini" target="_blank">Source Code</a>
-                <a class="btn read" href="https://github.com/abhinavnautiyalDS/Smart-Job-Recommendation-System-using-LangChain-Gemini" target="_blank">Read</a>
-            </div>
-        </div>
-        <!-- Kindle Book Recommendation -->
-        <div class="project" data-category="ml">
-            <img src="book.png" alt="Kindle Book Recommendation">
-            <h4>Kindle Book Recommendation</h4>
-            <div class="project-tech">
-                <span>NLP</span> <span>TF‑IDF</span> <span>Cosine Similarity</span>
-            </div>
-            <p class="project-desc">
-                Content‑based recommendation engine using book descriptions and user preferences.
-            </p>
-            <div class="buttons">
-                <a class="btn source" href="https://github.com/abhinavnautiyalDS/Book-recommender-system/blob/main/Book_recommeder_system.ipynb" target="_blank">Source Code</a>
-                <a class="btn read" href="https://github.com/abhinavnautiyalDS/Book-recommender-system" target="_blank">Read</a>
+            <div class="project-body">
+                <h4>Finwise GenAI Platform</h4>
+                <div class="project-tech">
+                    <span>LangChain</span><span>RAG</span><span>SQL Agent</span><span>Chroma</span>
+                </div>
+                <p class="project-desc">Generative AI assistant with agentic RAG, SQL querying, and automation for financial insights.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Finwise-GenAI-Assistant/tree/main/finwise-genai-capstone" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://medium.com/@abhinavnautiyal96/building-a-real-world-financial-genai-assistant-from-memory-to-automation-f4bf8f38a052" target="_blank"><i class="fab fa-medium"></i> Article</a>
+                </div>
             </div>
         </div>
-        <!-- Flight Fare Prediction -->
-        <div class="project" data-category="sql">
-            <img src="flight.png" alt="Flight Fare Prediction">
-            <h4>Flight Fare Prediction</h4>
-            <div class="project-tech">
-                <span>Random Forest</span> <span>SQL</span> <span>EDA</span>
+
+        <div class="project reveal" data-category="ml">
+            <div class="project-img-wrap">
+                <img src="vehical.png" alt="Vehicle Insurance Cross-Sell">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">ML</span>
             </div>
-            <p class="project-desc">
-                Predictive model for flight prices with SQL‑based data analysis and feature engineering.
-            </p>
-            <div class="buttons">
-                <a class="btn source" href="https://github.com/abhinavnautiyalDS/flight_price_prediction/blob/main/flight_price_prediction.ipynb" target="_blank">Source Code</a>
-                <a class="btn read" href="https://github.com/abhinavnautiyalDS/flight_price_prediction" target="_blank">Read</a>
-            </div>
-        </div>
-        <!-- Banking Analytics -->
-        <div class="project" data-category="sql">
-            <img src="banking.png" alt="Banking Analytics">
-            <h4>Banking Analytics Platform</h4>
-            <div class="project-tech">
-                <span>Power BI</span> <span>DAX</span> <span>SQL</span>
-            </div>
-            <p class="project-desc">
-                Interactive dashboards for customer segmentation, loan performance, and revenue analysis.
-            </p>
-            <div class="buttons">
-                <a class="btn source" href="https://github.com/abhinavnautiyalDS/Banking-Powerbi-Project/tree/main" target="_blank">Source Code</a>
-                <a class="btn read" href="https://github.com/abhinavnautiyalDS/Banking-Powerbi-Project" target="_blank">Read</a>
+            <div class="project-body">
+                <h4>Vehicle Insurance Cross-Sell</h4>
+                <div class="project-tech">
+                    <span>SMOTE</span><span>XGBoost</span><span>Imbalanced Learning</span>
+                </div>
+                <p class="project-desc">Predictive model for insurance cross-sell using advanced resampling and ensemble techniques.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Health-Insurance-cross-Prediction/blob/main/HealthInsuranceCrossSellPrediction.ipynb" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://github.com/abhinavnautiyalDS/Health-Insurance-cross-Prediction" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                </div>
             </div>
         </div>
+
+        <div class="project reveal" data-category="dl">
+            <div class="project-img-wrap">
+                <img src="job.png" alt="NLP Job Recommendation">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">NLP</span>
+            </div>
+            <div class="project-body">
+                <h4>NLP Job Recommendation</h4>
+                <div class="project-tech">
+                    <span>LangChain</span><span>Gemini</span><span>FAISS</span><span>Streamlit</span>
+                </div>
+                <p class="project-desc">Semantic resume-to-job matching and automated application generation using LLMs.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Smart-Job-Recommendation-System-using-LangChain-Gemini" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://github.com/abhinavnautiyalDS/Smart-Job-Recommendation-System-using-LangChain-Gemini" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project reveal" data-category="ml">
+            <div class="project-img-wrap">
+                <img src="book.png" alt="Kindle Book Recommendation">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">ML</span>
+            </div>
+            <div class="project-body">
+                <h4>Kindle Book Recommendation</h4>
+                <div class="project-tech">
+                    <span>NLP</span><span>TF-IDF</span><span>Cosine Similarity</span>
+                </div>
+                <p class="project-desc">Content-based recommendation engine using book descriptions and user preferences.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Book-recommender-system/blob/main/Book_recommeder_system.ipynb" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://github.com/abhinavnautiyalDS/Book-recommender-system" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project reveal" data-category="sql">
+            <div class="project-img-wrap">
+                <img src="flight.png" alt="Flight Fare Prediction">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">SQL</span>
+            </div>
+            <div class="project-body">
+                <h4>Flight Fare Prediction</h4>
+                <div class="project-tech">
+                    <span>Random Forest</span><span>SQL</span><span>EDA</span>
+                </div>
+                <p class="project-desc">Predictive model for flight prices with SQL-based data analysis and feature engineering.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/flight_price_prediction/blob/main/flight_price_prediction.ipynb" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://github.com/abhinavnautiyalDS/flight_price_prediction" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project reveal" data-category="sql">
+            <div class="project-img-wrap">
+                <img src="banking.png" alt="Banking Analytics">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">BI</span>
+            </div>
+            <div class="project-body">
+                <h4>Banking Analytics Platform</h4>
+                <div class="project-tech">
+                    <span>Power BI</span><span>DAX</span><span>SQL</span>
+                </div>
+                <p class="project-desc">Interactive dashboards for customer segmentation, loan performance, and revenue analysis.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Banking-Powerbi-Project/tree/main" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://github.com/abhinavnautiyalDS/Banking-Powerbi-Project" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
+
+<!-- ===================== CONTACT / FOOTER ===================== -->
+<footer class="footer" id="contact">
+    <div class="footer-inner">
+        <div class="footer-top reveal">
+            <h2>Let's Build Something Together</h2>
+            <p>Open to full-time roles, freelance projects, and AI research collaborations.</p>
+            <a href="mailto:abhinavnautiyal96@gmail.com" class="btn-primary large-btn">
+                <i class="fas fa-paper-plane"></i> Get In Touch
+            </a>
+        </div>
+        <div class="footer-links reveal">
+            <a href="https://www.linkedin.com/in/abhinavnautiyalds/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/abhinavnautiyalDS" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://medium.com/@abhinavnautiyal96" target="_blank"><i class="fab fa-medium"></i> Medium</a>
+            <a href="mailto:abhinavnautiyal96@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+        <p class="footer-copy">© 2025 Abhinav Nautiyal · Crafted with passion</p>
+    </div>
+</footer>
 
 <script src="script.js"></script>
 </body>
