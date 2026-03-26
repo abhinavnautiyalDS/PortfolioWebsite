@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // ========================
-    // NAVBAR: scroll effect + active link
+    // NAVBAR scroll effect
     // ========================
     const navbar = document.getElementById("navbar");
     window.addEventListener("scroll", () => {
         navbar.classList.toggle("scrolled", window.scrollY > 40);
     });
 
-    // Active nav link on scroll
+    // Active nav link highlight on scroll
     const navLinks = document.querySelectorAll(".nav-links a");
-    const sections = document.querySelectorAll("section[id], header[id], footer[id]");
-    const observer = new IntersectionObserver((entries) => {
+    const allSections = document.querySelectorAll("section[id], header[id], footer[id]");
+    const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 navLinks.forEach(link => {
@@ -23,31 +23,30 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, { rootMargin: "-40% 0px -55% 0px" });
-    sections.forEach(s => observer.observe(s));
+    allSections.forEach(s => sectionObserver.observe(s));
 
     // ========================
     // MOBILE NAV
     // ========================
     const hamburger = document.getElementById("hamburger");
     const mobileNav = document.getElementById("mobile-nav");
-    hamburger.addEventListener("click", () => {
+
+    hamburger.addEventListener("click", (e) => {
+        e.stopPropagation();
         mobileNav.classList.toggle("open");
     });
     document.querySelectorAll(".mobile-link").forEach(link => {
         link.addEventListener("click", () => mobileNav.classList.remove("open"));
     });
-    // Close on outside click
     document.addEventListener("click", (e) => {
-        if (!navbar.contains(e.target) && !mobileNav.contains(e.target)) {
-            mobileNav.classList.remove("open");
-        }
+        if (!navbar.contains(e.target)) mobileNav.classList.remove("open");
     });
 
     // ========================
-    // MODAL
+    // CERTIFICATES MODAL
     // ========================
-    const modal = document.getElementById("cert-modal");
-    const openBtn = document.getElementById("open-cert-modal");
+    const modal    = document.getElementById("cert-modal");
+    const openBtn  = document.getElementById("open-cert-modal");
     const closeBtn = document.querySelector(".close");
 
     if (modal && openBtn) {
@@ -63,20 +62,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ========================
     // INTRODUCTION TABS
+    // Written is active by default (set in HTML), just handle clicks
     // ========================
     const tabs = document.querySelectorAll(".tab");
     const introContents = document.querySelectorAll(".intro-content");
+
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
             tabs.forEach(t => t.classList.remove("active"));
             introContents.forEach(c => c.classList.remove("active"));
             tab.classList.add("active");
-            document.getElementById(tab.dataset.tab + "-content")?.classList.add("active");
+            const target = document.getElementById(tab.dataset.tab + "-content");
+            if (target) target.classList.add("active");
         });
     });
 
     // ========================
-    // SECTION FILTERS (show/hide sections)
+    // SECTION VISIBILITY FILTERS
     // ========================
     const sectionFilters = document.querySelectorAll(".section-filter");
     const sectionMap = {
@@ -85,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         education:  document.getElementById("education-section"),
         projects:   document.getElementById("projects-section")
     };
+
     function updateSections() {
         sectionFilters.forEach(btn => {
             const sec = sectionMap[btn.dataset.section];
@@ -97,10 +100,10 @@ document.addEventListener("DOMContentLoaded", () => {
             updateSections();
         });
     });
-    updateSections();
+    updateSections(); // apply on load
 
     // ========================
-    // PROJECT FILTERS
+    // PROJECT CATEGORY FILTERS
     // ========================
     const projectFilters = document.querySelectorAll(".filter");
     const projectCards   = document.querySelectorAll(".project");
@@ -113,15 +116,15 @@ document.addEventListener("DOMContentLoaded", () => {
             projectCards.forEach(card => {
                 const show = cat === "all" || card.dataset.category === cat;
                 card.style.display = show ? "flex" : "none";
-                // re-trigger reveal animation
                 if (show) {
                     card.classList.remove("visible");
-                    setTimeout(() => card.classList.add("visible"), 50);
+                    requestAnimationFrame(() => {
+                        setTimeout(() => card.classList.add("visible"), 30);
+                    });
                 }
             });
         });
     });
-    // Init all visible
     projectCards.forEach(p => (p.style.display = "flex"));
 
     // ========================
@@ -129,75 +132,33 @@ document.addEventListener("DOMContentLoaded", () => {
     // ========================
     const revealEls = document.querySelectorAll(".reveal");
     const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // stagger sibling reveals slightly
-                const delay = Array.from(entry.target.parentNode.children)
-                    .filter(el => el.classList.contains("reveal"))
-                    .indexOf(entry.target) * 60;
-                setTimeout(() => entry.target.classList.add("visible"), delay);
+                // Stagger siblings slightly
+                const siblings = Array.from(entry.target.parentNode.children)
+                    .filter(el => el.classList.contains("reveal"));
+                const idx = siblings.indexOf(entry.target);
+                setTimeout(() => {
+                    entry.target.classList.add("visible");
+                }, idx * 55);
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
+
     revealEls.forEach(el => revealObserver.observe(el));
 
-    // ========================
-    // PARTICLE CANVAS (subtle background dots)
-    // ========================
-    const canvas = document.getElementById("particles-canvas");
-    if (canvas) {
-        const ctx = canvas.getContext("2d");
-        let particles = [];
-        let W, H;
-
-        function resize() {
-            W = canvas.width  = window.innerWidth;
-            H = canvas.height = window.innerHeight;
-        }
-        resize();
-        window.addEventListener("resize", () => { resize(); initParticles(); });
-
-        function initParticles() {
-            particles = [];
-            const count = Math.floor((W * H) / 18000);
-            for (let i = 0; i < count; i++) {
-                particles.push({
-                    x: Math.random() * W,
-                    y: Math.random() * H,
-                    r: Math.random() * 1.2 + 0.3,
-                    vx: (Math.random() - 0.5) * 0.15,
-                    vy: (Math.random() - 0.5) * 0.15,
-                    alpha: Math.random() * 0.5 + 0.2
-                });
-            }
-        }
-        initParticles();
-
-        function drawParticles() {
-            ctx.clearRect(0, 0, W, H);
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 194, 255, ${p.alpha})`;
-                ctx.fill();
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0) p.x = W;
-                if (p.x > W) p.x = 0;
-                if (p.y < 0) p.y = H;
-                if (p.y > H) p.y = 0;
-            });
-            requestAnimationFrame(drawParticles);
-        }
-        drawParticles();
+    // Hero reveal on load
+    const heroReveal = document.querySelector(".hero .reveal");
+    if (heroReveal) {
+        setTimeout(() => heroReveal.classList.add("visible"), 150);
     }
 
     // ========================
-    // SMOOTH ANCHOR SCROLL (accounts for fixed navbar height)
+    // SMOOTH SCROLL (offset for navbar height)
     // ========================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function(e) {
+        anchor.addEventListener("click", function (e) {
             const target = document.querySelector(this.getAttribute("href"));
             if (target) {
                 e.preventDefault();
@@ -209,11 +170,54 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ========================
-    // HERO REVEAL on load
+    // PARTICLE CANVAS (floating blue dots)
     // ========================
-    const heroReveal = document.querySelector(".hero .reveal");
-    if (heroReveal) {
-        setTimeout(() => heroReveal.classList.add("visible"), 200);
+    const canvas = document.getElementById("particles-canvas");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    let W, H;
+
+    function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
     }
+    resize();
+    window.addEventListener("resize", () => { resize(); initParticles(); });
+
+    function initParticles() {
+        particles = [];
+        const count = Math.min(Math.floor((W * H) / 18000), 80);
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                r: Math.random() * 1.2 + 0.3,
+                vx: (Math.random() - 0.5) * 0.18,
+                vy: (Math.random() - 0.5) * 0.18,
+                alpha: Math.random() * 0.45 + 0.15
+            });
+        }
+    }
+    initParticles();
+
+    function drawParticles() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 194, 255, ${p.alpha})`;
+            ctx.fill();
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0) p.x = W;
+            if (p.x > W) p.x = 0;
+            if (p.y < 0) p.y = H;
+            if (p.y > H) p.y = 0;
+        });
+        requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
 
 });
