@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { rootMargin: "-40% 0px -55% 0px" });
     allSections.forEach(s => sectionObserver.observe(s));
 
+    
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+
     // ========================
     // MOBILE NAV
     // ========================
