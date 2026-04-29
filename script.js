@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     allSections.forEach(s => sectionObserver.observe(s));
 
     
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+    // <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 
     // ========================
     // MOBILE NAV
